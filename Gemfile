@@ -5,3 +5,4 @@ ruby '3.0.3'
 
 gem 'discordrb'
 gem 'dotenv'
+gem 'simple_twitter'
