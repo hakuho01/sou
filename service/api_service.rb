@@ -5,7 +5,6 @@ require './util/api_util'
 
 require 'net/http'
 require 'open-uri'
-require 'nokogiri'
 require 'openssl'
 require 'cgi'
 require 'simple_twitter'
