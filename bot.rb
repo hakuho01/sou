@@ -7,7 +7,7 @@ Dotenv.load
 TOKEN = ENV['TOKEN']
 CLIENT_ID = ENV['CLIENT_ID'].to_i
 
-bot = Discordrb::Commands::CommandBot.new token: TOKEN, client_id: CLIENT_ID, prefix:'!sou '
+bot = Discordrb::Commands::CommandBot.new token: TOKEN, client_id: CLIENT_ID, prefix:'!sou ', discord_api_version: 9
 bot_controller = BotController.instance.init(bot)
 
 # TwiiterのNSFWサムネイル表示
