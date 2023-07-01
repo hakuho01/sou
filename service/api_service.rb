@@ -32,8 +32,8 @@ class ApiService < Component
     post_content = ""
 
     twitter_urls.each do |twitter_url|
-      fx_twitter_url = twitter_url.to_s.insert(8,'fx')
-      post_content = post_content + fx_twitter_url + "\n"
+      vx_twitter_url = twitter_url.to_s.insert(8,'vx')
+      post_content = post_content + vx_twitter_url + "\n"
     end
     event.respond(post_content)
   end
