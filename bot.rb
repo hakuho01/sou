@@ -9,11 +9,12 @@ require './controller/bot_controller'
 Dotenv.load
 TOKEN = ENV['TOKEN']
 CLIENT_ID = ENV['CLIENT_ID'].to_i
+POSTGRES_URL = ENV['POSTGRES_URL']
 
 bot = Discordrb::Commands::CommandBot.new token: TOKEN, client_id: CLIENT_ID, prefix:'!sou ', discord_api_version: 9
 bot_controller = BotController.instance.init(bot)
 
-DB = Sequel.connect("postgresql://postgres:6mksPMQ4vHMwfdaK6zev@containers-us-west-88.railway.app:5859/railway")
+DB = Sequel.connect(POSTGRES_URL)
 
 # TwiiterのNSFWサムネイル表示
 bot.message(contains: %r{https://twitter.com/([a-zA-Z0-9_]+)/status/([0-9]+)}) do |event|
