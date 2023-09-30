@@ -38,7 +38,7 @@ end
 
 bot.command :remind do |event|
   words = event.message.to_s.split(' ')
-  datetime = DateTime.parse(words[2].gsub(/\//,'-') << ' ' << words[3])
+  datetime = DateTime.parse(words[2].gsub(/\//,'-') << ' ' << words[3]).new_offset('+0900')
   user_id = event.user.id
   text = words[4]
   channel_id = event.channel.id
