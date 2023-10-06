@@ -17,7 +17,7 @@ bot_controller = BotController.instance.init(bot)
 DB = Sequel.connect(POSTGRES_URL)
 
 # TwiiterのNSFWサムネイル表示
-bot.message(contains: %r{https://twitter.com/([a-zA-Z0-9_]+)/status/([0-9]+)}) do |event|
+bot.message(contains: %r{https://twitter.com/([a-zA-Z0-9_]+)/status/([0-9]+)|https://x.com/([a-zA-Z0-9_]+)/status/([0-9]+)}) do |event|
   bot_controller.handle_message(event, :thumb)
 end
 
@@ -26,7 +26,7 @@ bot.message(contains: '<:0cb_3totsume:986725406105280582>') do |event|
 end
 
 # リマインダー機能
-bot.heartbeat do |event|
+bot.heartbeat do
   now = Time.now
   unexecuted_tasks = DB[:reminder].where(executed: false)
   notifications = unexecuted_tasks.where { datetime <= now }
