@@ -15,7 +15,6 @@ class ApiService < Component
     sleep 5
     event_msg_id = event.message.id.to_s
     event_msg_ch = event.message.channel.id.to_s
-    return if event_msg_ch == '1113335713358938233' # 展開しないチャンネル
 
     uri = URI.parse("https://discord.com/api/channels/#{event_msg_ch}/messages/#{event_msg_id}")
     res = Net::HTTP.get_response(uri, 'Authorization' => "Bot #{TOKEN}")
