@@ -40,7 +40,7 @@ bot.command :remind do |event|
   words = event.message.to_s.split(' ')
   datetime = DateTime.parse(words[2].gsub(/\//,'-') << ' ' << words[3]) - Rational('9/24')
   user_id = event.user.id
-  text = words[4]
+  text = words[4].delete('`')
   channel_id = event.channel.id
   DB[:reminder].insert(datetime: datetime, executed: false, user_id: user_id, text: text, channel: channel_id)
   event.respond('リマインダー登録完了。')
